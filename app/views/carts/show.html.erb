@@ -1,0 +1,47 @@
+<h2>Cart</h2>
+
+<div class="text-end">
+  <%= link_to "Add items to cart", items_path, class: "btn btn-primary" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.item.name %></td>
+        <td>$<%= cart_item.item.price %></td>
+
+        <td>$<%= (cart_item.item.price * cart_item.quantity).round(2) %></td>
+
+        <td>
+          <div class="inline-buttons">
+          <%= link_to '+', increase_quantity_cart_path(id: cart_item.id), data: { turbo_method: "post" }, class: 'btn btn-success' %>
+          <span><%= cart_item.quantity %></span>
+          <%= link_to '-', decrease_quantity_cart_path(id: cart_item.id), data: { turbo_method: "post" }, class: 'btn btn-danger' %>
+          </div>
+        </td>
+
+        <!-- Total price calculation (Price * Quantity) -->
+        <td>$<%= (cart_item.item.price * cart_item.quantity).round(2) %></td>
+
+        <td>
+          <%= button_to 'Remove', remove_from_cart_path(cart_item), method: :delete, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @cart.cart_items.empty? %>
+  <p>Your cart is empty.</p>
+<% end %>
