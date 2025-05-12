@@ -10,18 +10,22 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    
+
   end
 
   def update
-    
+
   end
   def destroy
-    
+
+  end
+  private
+  def product_params
+    params.require(:product).permit(:name, :price, :description, :image)
   end
 end
