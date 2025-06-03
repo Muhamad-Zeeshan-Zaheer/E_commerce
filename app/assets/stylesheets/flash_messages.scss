@@ -1,0 +1,12 @@
+.alert-container {
+  position: fixed;
+  top: 6rem;
+  right: 1rem;
+  z-index: 1050;
+}
+
+.alert-info {
+  background-color: red;
+  width: 20rem;
+  color: white;
+}
