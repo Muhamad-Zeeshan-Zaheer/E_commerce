@@ -8,17 +8,17 @@
       <%= form_with model: @product, local: true do |form| %>
         <div class="mb-3">
           <%= form.label :name, 'Name', class: "form-label" %>
-          <%= form.text_field :name, class: "form-control", placeholder: "Enter the item name" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Enter the product name" %>
         </div>
 
         <div class="mb-3">
           <%= form.label :description, 'Description', class: "form-label" %>
-          <%= form.text_area :description, class: "form-control", placeholder: "Enter the item description" %>
+          <%= form.text_area :description, class: "form-control", placeholder: "Enter the product description" %>
         </div>
 
         <div class="mb-3">
           <%= form.label :price, 'Price', class: "form-label" %>
-          <%= form.number_field :price, class: "form-control", placeholder: "Enter the price of item" %>
+          <%= form.number_field :price, class: "form-control", placeholder: "Enter the product price" %>
         </div>
 
         <div class="mb-3">
