@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [ :edit, :update, :destroy ]
+  before_action :authenticate_user!
   def index
     @products=Product.all
   end
@@ -29,7 +30,7 @@ class ProductsController < ApplicationController
   end
   def destroy
     @product.destroy
-    redirect_to products_path, status: :see_other , alert: "Product was successfully deleted."
+    redirect_to products_path, status: :see_other, alert: "Product was successfully deleted."
   end
   private
 
